@@ -1,0 +1,10 @@
+--- a/fsck/fsck.c	2021-11-17 10:13:55.729267514 +0100
++++ b/fsck/fsck.c	2022-05-10 12:19:36.397415101 +0200
+@@ -796,6 +796,7 @@
+ 	if (exfat_read(exfat->blk_dev->dev_fd, boot_sect,
+ 		       sizeof(*boot_sect), 0) != (ssize_t)sizeof(*boot_sect)) {
+ 		exfat_err("failed to read Main boot sector\n");
++		free(boot_sect);
+ 		return -EIO;
+ 	}
+ 
