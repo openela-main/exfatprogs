@@ -1,13 +1,11 @@
 Name:           exfatprogs
-Version:        1.1.3
-Release:        3%{?dist}
+Version:        1.2.0
+Release:        2%{?dist}
 Summary:        Userspace utilities for exFAT filesystems
 License:        GPLv2
 URL:            https://github.com/%{name}/%{name}
 
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
-Patch0:         0001-fsck-fix-memory-leak.patch
-Patch1:         0002.patch
 
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -36,16 +34,26 @@ autoreconf -vif
 %doc README.md
 %{_sbindir}/dump.exfat
 %{_sbindir}/exfatlabel
+%{_sbindir}/exfat2img
 %{_sbindir}/fsck.exfat
 %{_sbindir}/mkfs.exfat
 %{_sbindir}/tune.exfat
 %{_mandir}/man8/dump.exfat.*
 %{_mandir}/man8/exfatlabel.*
+%{_mandir}/man8/exfat2img.*
 %{_mandir}/man8/fsck.exfat.*
 %{_mandir}/man8/mkfs.exfat.*
 %{_mandir}/man8/tune.exfat.*
 
 %changelog
+* Mon Mar 13 2023 Pavel Reichl <preichl@redhat.com> - 1.2.0-2
+- Fix wrong BZ number in git log
+  Related: rhbz#2173273
+
+* Mon Mar 06 2023 Pavel Reichl <preichl@redhat.com> - 1.2.0-1
+- Rebase
+  Related: rhbz#2173273
+
 * Tue May 24 2022 Pavel Reichl <preichl@redhat.com> - 1.1.3-3.test
 - Fix some covscan issues
 
