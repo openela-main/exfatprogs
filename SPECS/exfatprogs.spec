@@ -1,11 +1,14 @@
 Name:           exfatprogs
-Version:        1.2.0
+Version:        1.2.2
 Release:        2%{?dist}
 Summary:        Userspace utilities for exFAT filesystems
 License:        GPLv2
 URL:            https://github.com/%{name}/%{name}
 
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
+Patch0:         for-next-1.2.2-exfat2img-fix-Missing-Initialization.patch
+Patch1:         for-next-1.2.2-exfatprogs-Fix-issues-found-by-OpenScanHub-tool.patch
+Patch2:         for-next-1.2.2-tune-label-fix-USE_AFTER_FREE.patch
 
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -46,6 +49,15 @@ autoreconf -vif
 %{_mandir}/man8/tune.exfat.*
 
 %changelog
+* Fri Dec 08 2023 Pavel Reichl <preichl@redhat.com> - 1.2.2-2
+- Backport fixes for issues found by OpenScanHub
+- Related: RHEL-7945
+
+* Mon Nov 06 2023 Pavel Reichl <preichl@redhat.com> - 1.2.2-1
+- Rebase to upstream v1.2.2
+- Related: RHEL-15865
+- Related: RHEL-14995
+
 * Mon Mar 13 2023 Pavel Reichl <preichl@redhat.com> - 1.2.0-2
 - Fix wrong BZ number in git log
   Related: rhbz#2173273
