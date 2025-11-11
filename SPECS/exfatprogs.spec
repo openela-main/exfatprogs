@@ -1,13 +1,11 @@
 Name:           exfatprogs
-Version:        1.2.2
-Release:        6%{?dist}
+Version:        1.2.8
+Release:        1%{?dist}
 Summary:        Userspace utilities for exFAT filesystems
 License:        GPL-2.0-only
 URL:            https://github.com/%{name}/%{name}
 
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
-Patch0:		v1.2.3-exfat2img-fix-Missing-Initialization.patch
-Patch1:		v1.2.3-tune-label-fix-USE_AFTER_FREE.patch
 
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -48,12 +46,16 @@ autoreconf -vif
 %{_mandir}/man8/tune.exfat.*
 
 %changelog
+* Mon Mar 31 2025 Pavel Reichl <preichl@redhat.com> - 1.2.8-1
+- Rebase to the latest upstream version
+  Related: RHEL-66219
+
 * Tue Oct 29 2024 Troy Dawson <tdawson@redhat.com> - 1.2.2-6
 - Bump release for October 2024 mass rebuild:
   Resolves: RHEL-64018
 
 * Mon Jul 01 2024 Pavel Reichl <preichl@redhat.com> - 1.2.2-5
-- Fox High impact true positive findings
+- Fix High impact true positive findings
 
 * Mon Jun 24 2024 Troy Dawson <tdawson@redhat.com> - 1.2.2-4
 - Bump release for June 2024 mass rebuild
